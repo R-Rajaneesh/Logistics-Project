@@ -1,13 +1,1 @@
-{
-  "stations": {
-    "Chennai": { "nearest_stations": ["Vellore", "Puducherry"], "goods": 15000 },
-    "Puducherry": { "nearest_stations": ["Tiruchirapalli", "Thanjavur", "Chennai", "Salem"], "goods": 10000 },
-    "Vellore": { "nearest_stations": ["Chennai", "Puducherry", "Salem"], "goods": 6000 },
-    "Tiruchirapalli": { "nearest_stations": ["Thanjavur", "Salem", "Puducherry", "Madurai", "Coimbatore"], "goods": 4000 },
-    "Salem": { "nearest_stations": ["Vellore", "Chennai", "Puducherry", "Madurai", "Tiruchirapalli"], "goods": 8000 },
-    "Madurai": { "nearest_stations": ["Coimbatore", "Thanjavur", "Tiruchirapalli", "Salem"], "goods": 12500 },
-    "Thanjavur": { "nearest_stations": ["Tiruchirapalli", "Puducherry", "Madurai", "Salem"], "goods": 11000 },
-    "Coimbatore": { "nearest_stations": ["Salem", "Madurai", "Tiruchirapalli"], "goods": 9000 }
-  },
-  "profiles": []
-}
+{"stations": {"Chennai": {"nearest_stations": ["Vellore", "Puducherry"], "goods": 14980}, "Puducherry": {"nearest_stations": ["Tiruchirapalli", "Thanjavur", "Chennai", "Salem"], "goods": 10000}, "Vellore": {"nearest_stations": ["Chennai", "Puducherry", "Salem"], "goods": 6000}, "Tiruchirapalli": {"nearest_stations": ["Thanjavur", "Salem", "Puducherry", "Madurai", "Coimbatore"], "goods": 4000}, "Salem": {"nearest_stations": ["Vellore", "Chennai", "Puducherry", "Madurai", "Tiruchirapalli"], "goods": 8000}, "Madurai": {"nearest_stations": ["Coimbatore", "Thanjavur", "Tiruchirapalli", "Salem"], "goods": 12500}, "Thanjavur": {"nearest_stations": ["Tiruchirapalli", "Puducherry", "Madurai", "Salem"], "goods": 11000}, "Coimbatore": {"nearest_stations": ["Salem", "Madurai", "Tiruchirapalli"], "goods": 9000}}, "profiles": [{"profile_id": "M1ZUKN4RQVP", "vehicles": [{"name": "Mini Van", "type": "Mini", "id": "TNLDAB25FDV", "load_size": 40}], "orders": [{"vehicle_id": "TNLDAB25FDV", "working_on_order": true, "last_pickup_station": "Chennai", "goods_loaded": 20, "destination_station": "Madurai"}]}]}

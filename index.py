@@ -16,107 +16,112 @@ from src.vehicle import vehicle
 
 # Main Code
 
-has_reset_index_val = sys.argv.index("--reset")
+has_arg = False
 
-if sys.argv[has_reset_index_val]:
+for arg in sys.argv:
 
-    stations = {
+    if arg == "--reset":
 
-        "Chennai": {
+        has_arg = True
 
-            "nearest_stations": ["Vellore", "Puducherry"],
 
-            # In tons
+        stations = {
 
-            "goods": 15000
+            "Chennai": {
 
-        },
+                "nearest_stations": ["Vellore", "Puducherry"],
 
-        "Puducherry": {
+                # In tons
 
-            "nearest_stations": ["Tiruchirapalli", "Thanjavur", "Chennai", "Salem"],
+                "goods": 15000
 
-            # In tons
+            },
 
-            "goods": 10000
+            "Puducherry": {
 
-        },
+                "nearest_stations": ["Tiruchirapalli", "Thanjavur", "Chennai", "Salem"],
 
-        "Vellore": {
+                # In tons
 
-            "nearest_stations": ["Chennai", "Puducherry", "Salem", ],
+                "goods": 10000
 
-            # In tons
+            },
 
-            "goods": 6000
+            "Vellore": {
 
-        },
+                "nearest_stations": ["Chennai", "Puducherry", "Salem", ],
 
-        "Tiruchirapalli": {
+                # In tons
 
-            "nearest_stations": ["Thanjavur", "Salem", "Puducherry", "Madurai", "Coimbatore"],
+                "goods": 6000
 
-            # In tons
+            },
 
-            "goods": 4000
+            "Tiruchirapalli": {
 
-        },
+                "nearest_stations": ["Thanjavur", "Salem", "Puducherry", "Madurai", "Coimbatore"],
 
-        "Salem": {
+                # In tons
 
-            "nearest_stations": ["Vellore", "Chennai", "Puducherry", "Madurai", "Tiruchirapalli"],
+                "goods": 4000
 
-            # In tons
+            },
 
-            "goods": 8000
+            "Salem": {
 
-        },
+                "nearest_stations": ["Vellore", "Chennai", "Puducherry", "Madurai", "Tiruchirapalli"],
 
-        "Madurai": {
+                # In tons
 
-            "nearest_stations": ["Coimbatore", "Thanjavur", "Tiruchirapalli", "Salem"],
+                "goods": 8000
 
-            # In tons
+            },
 
-            "goods": 12500
+            "Madurai": {
 
-        },
+                "nearest_stations": ["Coimbatore", "Thanjavur", "Tiruchirapalli", "Salem"],
 
-        "Thanjavur": {
+                # In tons
 
-            "nearest_stations": ["Tiruchirapalli", "Puducherry", "Madurai", "Salem"],
+                "goods": 12500
 
-            # In tons
+            },
 
-            "goods": 11000
+            "Thanjavur": {
 
-        },
+                "nearest_stations": ["Tiruchirapalli", "Puducherry", "Madurai", "Salem"],
 
-        "Coimbatore": {
+                # In tons
 
-            "nearest_stations": ["Salem", "Madurai", "Tiruchirapalli"],
+                "goods": 11000
 
-            # In tons
+            },
 
-            "goods": 9000
+            "Coimbatore": {
+
+                "nearest_stations": ["Salem", "Madurai", "Tiruchirapalli"],
+
+                # In tons
+
+                "goods": 9000
+
+            }
 
         }
 
-    }
+        with open("./storage.json", "w") as db:
+        
+            data = {}
 
-    with open("./storage.json", "w") as db:
+            data["stations"] = stations
 
-        data = {}
+            data["profiles"] = []
 
-        data["stations"] = stations
+            db.write(json.dumps(data))
 
-        data["profiles"] = []
+            db.close()
 
-        db.write(json.dumps(data))
-
-        db.close()
-
-        exit(1)
+            exit(1)
 
 # File imports
 
@@ -245,8 +250,8 @@ order = vehicle(profile_id)
 
 # Checking if the script is exiting
 
-@atexit.register
 
+@atexit.register
 def exit_handler():
 
     print()

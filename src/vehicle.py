@@ -14,7 +14,26 @@ from src.loads import loads
 
 # Main Function
 
+
 def vehicle(profile_id):
+
+    database = {}
+
+    with open("./storage.json", "r") as data:
+
+        database = json.load(data)
+
+        profiles = database["profiles"]
+
+        profile = {}
+
+        for Profile in profiles:
+
+            if Profile["profile_id"] == profile_id:
+
+                profile = Profile
+
+
 
     if len(profile["vehicles"]) == 0:
 
@@ -41,59 +60,44 @@ def vehicle(profile_id):
         vehicle_type, index = pick(
             options, title, indicator="", default_index=0, multiselect=False)
 
-        database = {}
 
-        with open("./storage.json", "r") as data:
+        vehicle_name = input("Enter a name for your vehicle: ")
 
-            database = json.load(data)
+        # Generating a random string as vehicle id
 
-            profiles = database["profiles"]
+        digits = random.choices(string.digits, k=2)
 
-            profile = {}
+        letters = random.choices(string.ascii_uppercase, k=9)
 
-            for Profile in profiles:
+        vehicle_id = random.sample(digits + letters, 11)
 
-                if Profile["profile_id"] == profile_id:
+        vehicle_id_str = ""
 
-                    profile = Profile
+        for id_char in vehicle_id:
 
-            vehicle_name = input("Enter a name for your vehicle: ")
+            vehicle_id_str += id_char
 
-            # Generating a random string as vehicle id
+        vehicle = {
 
-            digits = random.choices(string.digits, k=2)
+            "name": vehicle_name,
 
-            letters = random.choices(string.ascii_uppercase, k=9)
+            "type": vehicle_type,
 
-            vehicle_id = random.sample(digits + letters, 11)
+            "id": vehicle_id_str,
 
-            vehicle_id_str = ""
+            "load_size": load_sizes[vehicle_type]
 
-            for id_char in vehicle_id:
+        }
 
-                vehicle_id_str += id_char
+        profile["vehicles"].append(vehicle)
 
-            vehicle = {
+        for Profile in profiles:
 
-                "name": vehicle_name,
+            if Profile["profile_id"] == profile_id:
 
-                "type": vehicle_type,
+                Profile = profile
 
-                "id": vehicle_id_str,
-
-                "load_size": load_sizes[vehicle_type]
-
-            }
-
-            profile["vehicles"].append(vehicle)
-
-            for Profile in profiles:
-
-                if Profile["profile_id"] == profile_id:
-
-                    Profile = profile
-
-            data.close()
+        data.close()
 
     else:
 
