@@ -1,0 +1,12 @@
+# Common
+
+.git/
+*.zip
+
+# Node
+
+node_modules/
+
+# Python
+
+__pycache__
